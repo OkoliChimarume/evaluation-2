@@ -12,7 +12,7 @@ function Experts() {
   }, []);
 
   return (
-    <section className="section section2 lg:py-10 mx-3 xl:mx-24 lg:mx-8 lg:mt-10 flex justify-between items-center flex-wrap mx-auto rounded-[2rem]">
+    <section className="section section2 lg:py-10 mx-3 xl:mx-24 lg:mx-8 lg:mt-10 flex justify-between items-center flex-wrap rounded-[2rem]">
       <div className="p-6 lg:p-4 lg:pl-14 lg:w-[33.6rem]">
         <h2 className="text-4xl xl:text-5xl text-dark font-semibold">
           Easy. Diversified. Managed by{" "}

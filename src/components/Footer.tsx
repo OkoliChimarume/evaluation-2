@@ -5,6 +5,7 @@ import GooglePlayIcon from "../assets/icons/google-play-white.svg";
 import Ndpr from "./../assets/images/ndpr.webp";
 import Rise from "./../assets/images/rise.webp";
 import { footerSocialLinks } from "../app-constants";
+import { useState } from "react";
 
 function Footer() {
   return (
@@ -154,9 +155,43 @@ function Footer() {
   );
 }
 export default Footer;
+
 function Newsletter() {
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const firstName = formData.get("first_name")?.toString().trim();
+    const lastName = formData.get("last_name")?.toString().trim();
+    const email = formData.get("email")?.toString().trim();
+
+    if (!firstName || !lastName || !email) {
+      setError("All fields are required");
+      return;
+    }
+
+    if (!/\S+@\S+\.\S+/.test(email)) {
+      setError("Invalid email address");
+      return;
+    }
+
+    setError("");
+    setSubmitted(true);
+    // Clear the form after successful submission
+    form.reset();
+
+    // reset success message after a few seconds
+    setTimeout(() => setSubmitted(false), 4000);
+  };
+
   return (
-    <section className="bg-teal-2 mt-10 rounded-lg lg:rounded-2xl p-6 lg:px-12 flex flex-col lg:flex-row justify-between items-center mx-6 lg:mx-auto max-w-[75rem] relative overflow-hidden">
+    <section
+      data-testid="newsletter-section"
+      className="bg-teal-2 mt-10 rounded-lg lg:rounded-2xl p-6 lg:px-12 flex flex-col lg:flex-row justify-between items-center mx-6 lg:mx-auto max-w-[75rem] relative overflow-hidden"
+    >
       <div className="text-white mb-6 lg:mb-0">
         <h2 className="text-2xl font-bold">Weekly newsletter</h2>
         <p className="text-lg">
@@ -164,46 +199,41 @@ function Newsletter() {
         </p>
       </div>
 
-      <form className="flex flex-col gap-3 w-full lg:w-auto">
+      <form
+        className="flex flex-col gap-3 w-full lg:w-auto"
+        onSubmit={handleSubmit}
+      >
         <div className="flex gap-1 flex-col lg:flex-row">
-          <label className="flex items-center px-2">
-            <span className="sr-only">First name</span>
-            <input
-              type="text"
-              name="first_name"
-              required
-              title="Enter first name"
-              className="rounded-full lg:rounded-r-none p-4 w-full lg:min-w-[16rem] outline-none placeholder-white text-white bg-teal-1"
-              placeholder="First name"
-            />
-          </label>
-          <label className="flex items-center px-2">
-            <span className="sr-only">Last name</span>
-            <input
-              type="text"
-              name="last_name"
-              required
-              title="Enter last name"
-              className="rounded-full lg:rounded-l-none p-4 w-full lg:min-w-[16rem] outline-none placeholder-white text-white bg-teal-1"
-              placeholder="Last name"
-            />
-          </label>
+          <input
+            type="text"
+            name="first_name"
+            required
+            placeholder="First name"
+            className="rounded-full p-4 w-full outline-none placeholder-white text-white bg-teal-1"
+            data-testid="first-name-input"
+          />
+          <input
+            type="text"
+            name="last_name"
+            required
+            placeholder="Last name"
+            className="rounded-full p-4 w-full outline-none placeholder-white text-white bg-teal-1"
+            data-testid="last-name-input"
+          />
         </div>
         <div className="flex justify-between items-center gap-3 rounded-full p-3 bg-teal-1 w-full">
-          <label className="flex items-center px-2">
-            <span className="sr-only">Email address</span>
-            <input
-              type="email"
-              name="email"
-              required
-              title="Enter a valid email address"
-              className=" outline-none placeholder-white text-white bg-transparent"
-              placeholder="Email address"
-            />
-          </label>
+          <input
+            type="email"
+            name="email"
+            required
+            placeholder="Email address"
+            className="outline-none placeholder-white text-white  bg-transparent flex-grow"
+            data-testid="email-input"
+          />
           <button
             type="submit"
             className="bg-white text-teal-1 rounded-full p-2 flex items-center justify-center w-10 h-8"
+            data-testid="submit-button"
           >
             <img
               src={ArrowRightPrimary}
@@ -213,6 +243,16 @@ function Newsletter() {
             />
           </button>
         </div>
+        {error && (
+          <p data-testid="error-message" className="text-red-400">
+            {error}
+          </p>
+        )}
+        {submitted && !error && (
+          <p data-testid="success-message" className="text-white">
+            Subscribed successfully!
+          </p>
+        )}
       </form>
     </section>
   );

@@ -43,7 +43,7 @@ export const offers = [
     bg: "bg-indigo",
   },
   {
-    id: 1,
+    id: 4,
     title: "We bring the world’s best companies to you. ",
     description:
       " Rise gives you the ability to choose a financial goal, whether tuition, a wedding, travel or retirement and put money away regularly toward them. ",

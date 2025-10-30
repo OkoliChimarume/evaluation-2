@@ -36,7 +36,7 @@ function OurNumbers() {
             </div>
           </span>
 
-          <p className="text-teal-1 text-dark text-base lg:text-2xl mt-1">
+          <p className="text-teal-1 text-base lg:text-2xl mt-1">
             Countries
           </p>
         </div>
