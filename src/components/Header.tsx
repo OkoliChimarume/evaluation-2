@@ -24,9 +24,9 @@ function Header() {
         </a>
         <section className="hidden lg:flex justify-between items-center w-[574px]">
           <nav>
-            <a href="">Why Rise</a>
+            <a href="/why-rise">Why Rise</a>
             <a href="">Blog</a>
-            <a href="">Rise for Business</a>
+            <a href="/business">Rise for Business</a>
           </nav>
           <div>
             <button type="button" className="bg-[#71879C0D] text-dark mr-2">

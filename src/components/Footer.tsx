@@ -160,7 +160,7 @@ function Newsletter() {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
     const formData = new FormData(form);
@@ -179,12 +179,32 @@ function Newsletter() {
     }
 
     setError("");
-    setSubmitted(true);
-    // Clear the form after successful submission
-    form.reset();
 
-    // reset success message after a few seconds
-    setTimeout(() => setSubmitted(false), 4000);
+    try {
+      // Simulated API request
+      const response = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ firstName, lastName, email }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(
+          data.message || "Subscription failed. Try again later."
+        );
+      }
+
+      // Success path
+      setSubmitted(true);
+      form.reset();
+
+      // Clear success message after a few seconds
+      setTimeout(() => setSubmitted(false), 4000);
+    } catch (err: any) {
+      setError(err.message || "Something went wrong. Please try again.");
+    }
   };
 
   return (
