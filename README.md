@@ -7,7 +7,7 @@ It demonstrates best practices in UI design, routing, form validation, and end-t
 
 ## Overview
 
-The project replicates the **Risevest** investment landing experience — allowing users to explore product sections, navigate between pages, and subscribe to a newsletter with live input validation and mock API responses.
+The project replicates the **Risevest** investment landing page experience.
 
 This project emphasizes:
 - **Frontend architecture best practices**
@@ -17,9 +17,9 @@ This project emphasizes:
 
 ---
 
-## 🚀 Key Features
+## Key Features
 
-* Responsive landing page (mobile → desktop)  
+* Responsive landing page (mobile and desktop)  
 * Smooth navigation between routes (`/`, `/why-rise`, `/business`)  
 * Newsletter subscription with form validation  
 * Error and success states for user feedback  
@@ -35,8 +35,8 @@ This project emphasizes:
 | **Framework** | React 18 |
 | **Language** | TypeScript |
 | **Styling** | Tailwind CSS |
-| **Testing (Unit)** | Jest + React Testing Library |
-| **Testing (E2E)** | Cypress |
+| **Unit Testing** | Jest + React Testing Library |
+| **E2E Testing** | Cypress |
 | **Version Control** | Git + GitHub |
 | **Deployment** | Vercel |
 
@@ -71,7 +71,7 @@ npm run cypress
 
 ## Test Documentation
 
-### Testing focuses on core user journeys:
+Testing focuses on core user journeys:
 
 ### Landing page rendering
 
