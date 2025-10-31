@@ -156,7 +156,7 @@ function Footer() {
 }
 export default Footer;
 
-function Newsletter() {
+export function Newsletter() {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
 
@@ -222,6 +222,7 @@ function Newsletter() {
       <form
         className="flex flex-col gap-3 w-full lg:w-auto"
         onSubmit={handleSubmit}
+        data-testid="newsletter-form"
       >
         <div className="flex gap-1 flex-col lg:flex-row">
           <input
