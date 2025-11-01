@@ -98,7 +98,8 @@ Mocked API used instead of a live backend.
 | View                      | Screenshot                                            |
 | ------------------------- | ----------------------------------------------------- |
 | **Landing Page**          | ![Landing](./public/screen-shots/landing-page.png)          |
-| **Cypress Tests Passing** | ![Cypress](./public/screen-shots/cypress-tests.png)    |
+| **JEST Tests** | ![JEST](./public/screen-shots/jest-tests.png)    |
+| **Cypress Tests** | ![Cypress](./public/screen-shots/cypress-tests.png)    |
 | **Coverage Report**       | ![Coverage](./public/screen-shots/coverage-report.png) |
 
 
